@@ -1,0 +1,183 @@
+//scss components.
+@use './input';
+
+//formulario
+form {
+    @apply
+    self-center
+    justify-items-center
+    text-center
+    flex-col
+    border-indigo-700
+    rounded-xl
+    border
+    mt-auto
+    pt-8
+    pb-7
+    min-h-fit
+    min-w-fit
+    w-3/4;
+    display: grid;
+    row-gap: 24px;
+    column-gap: 24px;
+    grid-template-columns: auto min-content min-content auto;
+    grid-template-rows: min-content min-content min-content min-content min-content;
+
+    @media (max-width: 1000px) {
+        grid-template-columns: auto min-content auto;
+        scale: 1.2;
+        width: 83%;
+    }
+
+    .input-container:nth-of-type(1) {
+        @apply
+        col-start-2
+        row-start-2;
+    }
+    .input-container:nth-of-type(2) {
+        @apply
+        col-start-3
+        row-start-2;
+
+        @media (max-width: 1000px) {
+            @apply
+            col-start-2
+            row-start-3
+            justify-self-center;
+        }
+    }
+    .input-container:nth-of-type(3) {
+        @apply
+        col-start-2
+        row-start-3;
+
+        @media (max-width: 1000px) {
+            @apply
+            col-start-2
+            row-start-4
+            justify-self-center;
+        }
+    }
+    .input-container:nth-of-type(4) {
+        @apply
+        col-start-3
+        row-start-3;
+
+        @media (max-width: 1000px) {
+            @apply
+            col-start-2
+            row-start-5
+            justify-self-center;
+        }
+    }
+    .input-container:nth-of-type(5) {
+        @apply
+        col-start-2
+        h-24
+        justify-start
+        row-start-4;
+
+        @media (max-width: 1000px) {
+            @apply
+            col-start-2
+            row-start-6
+            justify-self-center;
+        }
+
+        label {
+            @apply
+            mt-4;
+        }
+    }
+
+    textarea {
+        @apply
+        rounded
+        outline-none
+        bg-indigo-200
+        border-b-2
+        border-r-2
+        border-b-indigo-100
+        w-full
+        text-sm
+        pl-3
+        pt-3
+        h-full
+        resize-none;
+    }
+    textarea:focus,
+    textarea:valid {
+       border-bottom: 2px solid cornflowerblue;
+    }
+    textarea:focus ~ label,
+    textarea:valid ~ label {
+       display: none;
+    }
+
+    h1 {
+        @apply
+        col-start-2
+        row-start-1
+        justify-self-start
+        text-2xl
+        font-bold
+        font-[Arial];
+    }
+
+    button {
+        @apply
+        col-start-2
+        row-start-5
+        col-span-2
+        bg-indigo-500
+        text-white
+        font-normal
+        hover:bg-indigo-600
+        self-center
+        text-base
+        select-none
+        justify-self-center
+        rounded-lg
+        w-[45vh]
+        h-10;
+
+        @media (max-width: 1000px) {
+            @apply
+            w-[25vh]
+            col-start-2
+            col-span-1
+            row-start-7;
+        }
+    }
+}
+
+div.contatos {
+    @apply
+    self-center
+    justify-items-center
+    text-center
+    flex-col
+    border-indigo-700
+    rounded-xl
+    border
+    min-h-fit
+    min-w-fit
+    mt-auto
+    mb-auto
+    pt-6
+    pb-5
+    w-3/4;
+
+    h2 {
+        @apply
+        self-center
+        font-bold
+        font-[Arial];
+    }
+
+    @media (max-width: 1000px) {
+        @apply
+        mb-1
+        w-full;
+    }
+}

@@ -1,0 +1,28 @@
+//slogan
+body {
+    h1.bem_vindo{
+        @apply 
+         flex
+         font-[Roman]
+         text-2xl
+         mt-4
+         font-semibold
+         h-8
+         justify-center;
+    }
+    p.slogan{
+        @apply 
+         flex
+         font-[Roman]
+         text-sm
+         self-center
+         text-center
+         text-nowrap;
+
+         @media (max-width: 1000px) {
+            @apply
+             scale-75
+             text-xs;
+        }
+    }
+}

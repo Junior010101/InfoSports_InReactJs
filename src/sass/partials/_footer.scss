@@ -1,0 +1,44 @@
+//rodape
+footer {
+    @apply
+     flex
+     h-16
+     mt-auto
+     rounded-bl-lg
+     rounded-br-lg
+     bg-indigo-500;
+
+     ul {
+        @apply
+         flex
+         items-center
+         w-full;
+
+         li:first-of-type {
+            @apply
+             text-white
+             select-none
+             cursor-pointer
+             text-2xl
+             font-[Arial]
+             ml-10;
+         }
+
+         li:last-of-type {
+            @apply
+             text-white
+             text-sm
+             cursor-pointer
+             select-none
+             pt-2
+             pb-2
+             pl-3
+             pr-3
+             mr-4
+             rounded-full
+             bg-slate-300
+             bg-opacity-70
+             ml-auto;
+         }
+     }
+}

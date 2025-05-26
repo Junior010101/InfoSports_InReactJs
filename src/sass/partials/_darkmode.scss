@@ -1,0 +1,149 @@
+//Darkmode Styles
+@mixin TextoPadrao() {
+    p, h1, h2, h3, h4, h5, h6 {
+        @apply
+         text-gray-200;
+    }
+}
+@mixin Header() {
+    header {
+        @apply
+         bg-gray-500;
+
+         button {
+            @apply
+             text-gray-600
+             bg-gray-300;
+         }
+    }
+}
+@mixin Footer() {
+    footer {
+        @apply
+         bg-gray-500;
+
+         li:last-of-type {
+            @apply
+             text-gray-600;
+         }
+    }
+}
+@mixin InfoBox() {
+    div.infobox {
+        @apply
+         hover:bg-gray-800;
+    }
+}
+@mixin Form() {
+    aside {
+        form {
+            @apply
+             border-purple-700
+             bg-gray-800;
+
+            button#btn {
+                @apply
+                 text-gray-200
+                 hover:bg-purple-600
+                 bg-purple-700;
+            }
+
+            dialog {
+                @apply
+                 border-t-purple-700;
+
+                 button {
+                    @apply
+                     hover:bg-purple-600
+                     bg-purple-700;
+                 }
+            }
+        }
+    }
+}
+
+@mixin Form2() {
+    form {
+        @apply
+        border-purple-700;
+
+        #concluir {
+            @apply
+            text-gray-200
+            hover:bg-purple-600
+            bg-purple-700;
+        }
+    }
+    div.contatos {
+        @apply
+        border-purple-700;
+    }
+}
+
+@mixin Input() {
+    .input-container {
+        input {
+            @apply
+             border-r-gray-600
+             border-b-gray-600
+             bg-gray-400;
+        }
+        textarea {
+            @apply
+            border-r-gray-600
+            border-b-gray-600
+            bg-gray-400;
+        }
+        label {
+            @apply
+             text-gray-600;  
+        }
+        input:focus,
+        input:valid {
+           @apply
+             border-r-gray-600    
+             border-b-2
+             border-purple-600;
+        }
+        textarea:focus,
+        textarea:valid {
+           @apply
+             border-r-gray-600    
+             border-b-2
+             border-purple-600;
+        }
+        input.invalid {
+            @apply
+             border-r-gray-600    
+             border-b-2
+             border-red-600;
+        }
+    }
+}
+
+@mixin Logo() {
+    header nav div.logo {
+        @apply
+         bg-gray-800;
+
+         img {
+            @apply
+             grayscale;
+         }
+    }
+}
+
+//Aplicando Estilos.
+.darkmode {
+    @include TextoPadrao();    
+    @include Header();
+    @include Footer();
+    @include InfoBox();
+    @include Form();
+    @include Form2();
+    @include Input();
+    @include Logo();
+
+    @apply
+     bg-gray-950;
+}

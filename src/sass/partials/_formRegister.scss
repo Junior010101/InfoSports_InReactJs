@@ -1,0 +1,76 @@
+//scss components.
+@use './input';
+
+//formulario
+form {
+    @apply
+    self-center
+    justify-items-center
+    text-center
+    flex-col
+    border-indigo-700
+    rounded-xl
+    border
+    pt-20
+    pb-14
+    min-h-fit
+    min-w-fit
+    w-3/4;
+    display: grid;
+    row-gap: 31px;
+    grid-template-columns: auto min-content auto;
+    grid-template-rows: min-content min-content min-content min-content min-content;
+
+    @media (max-width: 1000px) {
+        scale: 1.2;
+        width: 83%;
+    }
+
+    h2 {
+        @apply
+        w-auto
+        col-start-2
+        row-start-1
+        self-center
+        font-bold
+        font-[Arial];
+    }
+
+    .input-container:nth-of-type(1) {
+        @apply
+        col-start-2
+        row-start-2;
+    }
+    .input-container:nth-of-type(2) {
+        @apply
+        col-start-2
+        row-start-3;
+    }
+    .input-container:nth-of-type(3) {
+        @apply
+        col-start-2
+        row-start-4;
+    }
+
+    button {
+        @apply
+        col-start-2
+        row-start-5
+        bg-indigo-500
+        text-white
+        font-normal
+        hover:bg-indigo-600
+        self-center
+        text-base
+        select-none
+        justify-self-center
+        rounded-lg
+        w-[45vh]
+        h-10;
+
+        @media (max-width: 1000px) {
+            @apply
+            w-[25vh];
+        }
+    }
+}

@@ -1,0 +1,44 @@
+//infobox
+div.infobox{
+    @apply
+     flex
+     flex-col
+     rounded-xl
+     border-8
+     mt-0
+     ml-0
+     mr-6
+     border-transparent
+     hover:bg-gray-200
+     w-52
+     h-80;
+
+    @media (max-width: 1000px) {
+        @apply
+        mr-0
+        scale-90;
+    }
+
+    img {
+        @apply
+         rounded-xl
+         w-48
+         h-32;
+    }
+
+    h2 {
+        @apply
+         text-base
+         my-5
+         font-[Roman]
+         font-bold;
+    }
+
+    p {
+        @apply
+         w-48
+         h-24
+         text-sm
+         font-[Arial];
+    }
+}

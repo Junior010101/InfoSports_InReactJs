@@ -1,0 +1,160 @@
+//scss components.
+@use './darkmode';
+
+//logo
+@media screen and (min-width: 521px) {
+    header nav div.logo{
+        @apply
+         opacity-0;
+    }
+}
+@media screen and (max-width: 520px) { 
+    header nav h1{
+        @apply
+         hidden;
+    }
+}
+
+//cabeçalho
+header {
+    @apply
+     bg-indigo-500
+     w-full
+     h-24 
+     rounded-tl-lg
+     rounded-tr-lg
+     flex 
+     items-center;
+
+    nav {
+        @apply 
+         w-full 
+         flex 
+         items-center;
+
+        div.logo {
+            @apply 
+             w-16 
+             h-20 
+             absolute
+             bg-indigo-800 
+             rounded-2xl 
+             flex
+             items-center
+             left-5;
+    
+            img {
+                @apply 
+                 w-20 
+                 h-16;
+            }
+        }
+
+        h1 {
+            @apply 
+             text-white
+             select-none
+             cursor-pointer
+             text-2xl
+             font-[Arial]
+             ml-10;
+        }
+
+        button {
+            @apply
+             bg-slate-200
+             cursor-pointer
+             select-none
+             text-sm
+             font-[Roman]
+             rounded-3xl
+             first-of-type:ml-auto
+             mr-3
+             pl-4
+             pr-4
+             pt-3
+             pb-7
+             h-7;
+
+             @media (max-width: 1000px) {
+                @apply
+                 mr-1
+                 scale-x-90;
+            }
+        }
+
+        input {
+            @apply
+             absolute
+             opacity-0;
+        }
+
+        label {
+            @apply
+             items-center
+             justify-center
+             cursor-pointer
+             scale-150
+             flex
+             h-4
+             p-2
+             w-1
+             ml-4
+             mr-8
+             rounded-xl;
+
+             div.fundoBtn {
+                @apply
+                 bg-black
+                 h-10
+                 pl-0.5
+                 pr-1
+                 pt-5
+                 pb-5
+                 justify-items-center
+                 justify-center
+                 flex
+                 flex-col
+                 rounded-full;
+
+                .fa-moon {
+                    @apply
+                     text-xs
+                     text-gray-400
+                     z-[2]
+                     ml-1.5
+                     mr-1;
+                }
+                .fa-sun {
+                    @apply
+                     text-xs
+                     mt-2
+                     text-yellow-400
+                     ml-0.5
+                     z-[2];
+                }
+            }
+
+            div.ball {
+                @apply
+                 bg-white
+                 rounded-full
+                 absolute
+                 self-end
+                 h-4
+                 w-4
+                 scale-110
+                 border-gray-300
+                 transition-transform
+                 duration-300
+                 border-r-2
+                 border-b-2
+                 pr-3.5
+                 z-[3];
+            }
+        }
+        input:checked + label div.ball {
+            transform: translateY(17px) scale(1.1);
+        }
+    }
+}

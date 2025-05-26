@@ -1,0 +1,106 @@
+//scss components.
+@use './globals.scss';
+@use './partials/slogan';
+@use './partials/infobox';
+@use './partials/formImc';
+
+//tailwind.
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+//Principal
+main {
+    @apply 
+    w-auto 
+    min-h-fit
+    mt-4
+    ml-3
+    mb-40
+    flex
+    flex-row;
+
+    @media (max-width: 1000px) {
+        div {
+            @apply
+            mt-4;
+            grid-template-columns: repeat(1, 208px) 1fr;
+        }
+        @apply 
+        h-full 
+        w-auto 
+        mb-0 
+        ml-0
+        mr-0
+        mt-4
+        items-center
+        flex
+        flex-col;
+
+    }
+
+    section {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(8, 208px);
+        grid-template-rows: 320px;
+        row-gap: 24px;
+        column-gap: 24px;
+        flex: 1;
+
+        @media (max-width: 3000px) {
+            grid-template-columns: repeat(8, 208px) 1fr;
+            margin-right: 10px;
+            margin-left: 40px;
+        }
+        @media (max-width: 2600px) {
+            grid-template-columns: repeat(5, 208px) 1fr;
+        }
+        @media (max-width: 1800px) {
+            grid-template-columns: repeat(4, 208px) 1fr;
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+        @media (max-width: 1600px) {
+            grid-template-columns: repeat(3, 208px) 1fr;
+        }
+        @media (max-width: 1300px) {
+            grid-template-columns: repeat(2, 208px) 1fr;
+        }
+        @media (max-width: 600px) {
+            grid-template-columns: repeat(1, 208px) 1fr;
+            grid-template-rows: 290px;
+            row-gap: 24px;
+            column-gap: auto;
+        }
+    }
+
+    aside {
+        @apply
+        h-fit
+        justify-center
+        mb-0
+
+        flex;
+        flex: 1; 
+
+        @media (max-width: 3000px) {
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        @media (max-width: 2000px) {
+            height: auto;
+
+        }
+        @media (max-width: 1800px) {
+            margin-right: 30px;
+            margin-left: 10px;
+        }
+        @media (max-width: 1000px) {
+            margin-right: 0px;
+            margin-left: 0px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+    }
+}

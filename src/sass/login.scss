@@ -1,0 +1,20 @@
+//scss components.
+@use './globals.scss';
+@use './partials/formLogin';
+
+//tailwind.
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+//login
+main {
+    @apply
+    h-fit
+    min-h-fit
+    max-h-screen
+    justify-center
+    flex-col
+    flex-1
+    flex;
+}
