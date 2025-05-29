@@ -1,6 +1,7 @@
 import express from 'express';
-import morgan from 'morgan';
 import cors from 'cors';
+import morgan from 'morgan';
+import router from './routes/routes'
 
 //iniciando express
 const app = express();
@@ -11,9 +12,12 @@ const porta = 3000;
 //ativando logs
 app.use(cors());
 app.use(morgan('dev'));
+app.use(express.json());
 
 //iniciando a api
 const start = async () => {
+    app.use('/', router);
+
     try{
         app.listen(porta, () => {
             console.log(`\u001b[34mServidor conectado na porta ${porta}...\u001b[37m`);
