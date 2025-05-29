@@ -1,4 +1,4 @@
-# 🏀 InfoSports In ReactJS
+# 🏀 InfoSports In ReactJS <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" width="45" height="55">
 
 Aplicação web fullstack criada com o objetivo de estudo e prática com **ReactJS** e **Node.js + TypeScript**. O projeto moderniza uma aplicação antiga voltada ao mundo dos esportes, com uma separação clara entre frontend e backend.
 
