@@ -1,15 +1,18 @@
-import { MysqlError } from "mysql";
 import { db } from "../conexao";
+import { MysqlError } from "mysql";
 
-export const Read = (_: any, res: any, selector: string, from: string) => {
-  const query: string = `SELECT ${selector} from ${from}`;
+export const Read = (selector: string, from: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
 
-  db.query(query, (error: MysqlError, data: any) => {
-    if (error) {
-      return res.json(error);
-    } 
-    else {
-      return res.status(200).json(data);
-    }
+    const query = `SELECT ${selector} FROM ${from};`;
+
+    db.query(query, (error: MysqlError | null, data: any) => {
+      
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
+      }
+    });
   });
 };

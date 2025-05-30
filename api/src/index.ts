@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import router from './routes/routes'
+import path from 'path';
 
 //iniciando express
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 
 //iniciando a api
 const start = async () => {
+    app.use(express.static(path.join(__dirname, '/public')));
     app.use('/', router);
 
     try{
