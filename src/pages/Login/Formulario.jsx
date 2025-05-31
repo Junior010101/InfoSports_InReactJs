@@ -1,16 +1,41 @@
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input";
 import { useState } from "react";
+import { api } from "../../js/api";
 
 export const Form = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [ ValidEmail, setValidEmail ] = useState(false);
     const [ ValidTelefone, setValidTelefone ] = useState(false);
     const email = document.getElementById('email');
         
-    const OnSubmit = (data) => {
+    const onSubmit = async (data) => {
         if (ValidEmail && ValidTelefone) {
-            console.log(data);
+            try {
+                data.telefone = data.telefone.replace(/\D/g, '');
+                const Valid = await api.post('/login', data);
+                reset()
+
+                if (Valid.data.existe) {
+                    const response = await api.get('/usuarios'); 
+                    const usuarios = response.data;
+                    
+                    const usuarioEncontrado = usuarios.find(u => 
+                        u.email === data.email || u.telefone === data.telefone
+                    );
+
+                    window.alert(`Seja bem-vindo de volta, ${usuarioEncontrado.nome}`);
+                    localStorage.setItem('logged', 'true');
+                } else {
+                    window.alert("Email ou Telefone invalidos.");
+                    localStorage.setItem('logged', 'false');
+                }
+
+            } catch (error) {
+                window.alert(`Deu erro`);
+            }
+        } else {
+            window.alert('Dados inválidos!');
         }
     }
 
@@ -72,7 +97,7 @@ export const Form = () => {
 
     return(
         <>
-        <form onSubmit={() => handleSubmit(OnSubmit)()}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <h2>Faça o seu Login</h2>
             <Input 
                 id="email"

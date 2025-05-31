@@ -1,18 +1,28 @@
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input";
 import { useState } from "react";
+import { api } from "../../js/api";
 
 export const Form = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [ ValidName, setValidName ] = useState(false);
     const [ ValidEmail, setValidEmail ] = useState(false);
     const [ ValidTelefone, setValidTelefone ] = useState(false);
     const name = document.getElementById('nome');
     const email = document.getElementById('email');
 
-    const OnSubmit = (data) => {
+    const onSubmit = async (data) => {
         if (ValidName && ValidEmail && ValidTelefone) {
-            console.log(data);
+            try {
+                data.telefone = data.telefone.replace(/\D/g, '');
+                await api.post('/usuarios', data)
+                window.alert(`Usuario: ${data.nome}, foi criado com sucesso!!!. Faça login para acessar seus contatos!`);
+                reset()
+            } catch (error) {
+                window.alert(`O Usuario: ${data.nome}, já exite com estás mesmas informações.`);
+            }
+        } else {
+            window.alert('Dados inválidos!');
         }
     };
 
@@ -96,7 +106,7 @@ export const Form = () => {
 
     return (
         <>
-        <form onSubmit={() => handleSubmit(OnSubmit)()}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <h2>Cadastre-se para acompanhar as notícias!</h2>
             <Input
                 {...register('nome', { 

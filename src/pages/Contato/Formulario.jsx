@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input";
 import { useState } from "react";
+import ContactList from "./ContactList";
 
 export const Form = () => {
     const { register, handleSubmit } = useForm();
@@ -8,6 +9,10 @@ export const Form = () => {
     const [ ValidSurname, setValidSurname ] = useState(false);
     const [ ValidEmail, setValidEmail ] = useState(false);
     const [ ValidTelefone, setValidTelefone ] = useState(false);
+    const [Logged, setLogged] = useState(() => {
+        return localStorage.getItem('logged') === 'true';
+    });
+
     const name = document.getElementById('nome');
     const surname = document.getElementById('sobrenome');
     const email = document.getElementById('email');
@@ -245,6 +250,12 @@ export const Form = () => {
         </form>
         <div className="contatos">
             <h2>Contatos</h2>
+
+            {!Logged ? 
+            <div>Faça Login para mostrar seus contatos...</div>
+            : 
+            <ContactList/>
+            }
         </div>
         </>
     );

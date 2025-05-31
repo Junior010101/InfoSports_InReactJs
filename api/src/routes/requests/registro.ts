@@ -1,11 +1,10 @@
-import { Read } from "../../controllers/read";
 import { Insert } from "../../controllers/insert";
-
-export const getUsers = async (req: any, res: any) => {
-    const data = await Read("*", "usuario");
-    return res.status(200).json(data);
-};
+import { Delete } from "../../controllers/delete";
 
 export const insertUsers = (req: any, res: any, fields: any[] | any, values: any[] | any) => {
     Insert(req, res, "usuario", fields, values);
-}
+};
+
+export const deleteUsers = (req: any, res: any, id: number) => {
+    Delete(req, res, "usuario", "id", id);
+};

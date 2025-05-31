@@ -156,7 +156,7 @@ div.contatos {
     self-center
     justify-items-center
     text-center
-    flex-col
+    flex-row
     border-indigo-700
     rounded-xl
     border
@@ -179,5 +179,36 @@ div.contatos {
         @apply
         mb-1
         w-full;
+    }
+
+    .contactlist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 1rem;
+        column-gap: 8rem;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;  
+        padding: 1rem;
+
+        .contact {
+            @apply
+            w-[280px]
+            cursor-pointer
+            shadow
+            rounded-xl
+            p-5
+            bg-[#f2f2f2]
+            flex
+            flex-col
+            items-center
+            gap-y-3
+            transition-transform;
+        }
+
+        .contact:hover {
+            transform: translateY(-10px);
+        }
     }
 }
