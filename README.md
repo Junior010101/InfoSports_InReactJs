@@ -72,6 +72,8 @@ npm run dev
 - ✅ Backend configurado (api) e conectado ao MySQL.
 - 🛠️ Integração visual e lógica em andamento.
 
+**Status:** em desenvolvimento.
+
 ---
 **Desenvolvido por [Junior010101](https://github.com/Junior010101)**
 
