@@ -133,6 +133,23 @@
     }
 }
 
+@mixin ContactList() {
+    div.contatos {
+        .contactlist {
+            .contact {
+                @apply bg-gray-300;   
+
+                h3 {
+                    @apply text-gray-700;   
+                }
+
+                p {
+                    @apply text-gray-600; 
+                }
+            } 
+        }
+    }
+}
 //Aplicando Estilos.
 .darkmode {
     @include TextoPadrao();    
@@ -143,6 +160,7 @@
     @include Form2();
     @include Input();
     @include Logo();
+    @include ContactList();
 
     @apply
      bg-gray-950;

@@ -1,26 +1,46 @@
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContactList from "./ContactList";
+import { api } from "../../js/api";
 
 export const Form = () => {
-    const { register, handleSubmit } = useForm();
-    const [ ValidName, setValidName ] = useState(false);
-    const [ ValidSurname, setValidSurname ] = useState(false);
-    const [ ValidEmail, setValidEmail ] = useState(false);
-    const [ ValidTelefone, setValidTelefone ] = useState(false);
+    const { register, handleSubmit, reset } = useForm();
+    const [ValidName, setValidName] = useState(false);
+    const [ValidSurname, setValidSurname] = useState(false);
+    const [ValidEmail, setValidEmail] = useState(false);
+    const [ValidTelefone, setValidTelefone] = useState(false);
+    const [contacts, setContacts] = useState([]);
     const [Logged, setLogged] = useState(() => {
         return localStorage.getItem('logged') === 'true';
     });
 
-    const name = document.getElementById('nome');
-    const surname = document.getElementById('sobrenome');
-    const email = document.getElementById('email');
-    const phone = document.getElementById('telefone');
+    useEffect(() => {
+        if (Logged) {
+            api.get('/contatos')
+                .then(res => setContacts(res.data))
+                .catch(err => console.error('Erro ao buscar contatos:', err));
+        }
+    }, [Logged]);
 
-    const OnSubmit = (data) => {
+    const OnSubmit = async (data) => {
         if (ValidName && ValidSurname && ValidEmail && ValidTelefone) {
-            console.log(data);
+            try {
+                const dadosDecampo = {
+                    telefone: data.telefone.replace(/\D/g, ''),
+                    nome_sobrenome: data.nome + " " + data.sobrenome,
+                    email: data.email,
+                    mensagem: data.mensagem
+                };
+
+                await api.post('/contatos', dadosDecampo);
+                setContacts(prev => [...prev, dadosDecampo]);
+                reset();
+            } catch (error) {
+                window.alert(`Não foi possível salvar seu contato.`);
+            }
+        } else {
+            window.alert('Dados inválidos!');
         }
     };
 
@@ -99,6 +119,12 @@ export const Form = () => {
         input.reportValidity();
     }
 
+    // Foco e avisos em cascata
+    const name = document.getElementById('nome');
+    const surname = document.getElementById('sobrenome');
+    const email = document.getElementById('email');
+    const phone = document.getElementById('telefone');
+
     const handleSobrenomeFocus = (e) => {
         if (!ValidName || name.value.trim() === "") {
             e.preventDefault();
@@ -134,7 +160,7 @@ export const Form = () => {
 
     return (
         <>
-        <form onSubmit={() => handleSubmit(OnSubmit)()}>
+        <form onSubmit={handleSubmit(OnSubmit)}>
             <h1>Contate-nos</h1>
             <Input
                 {...register('nome', { 
@@ -248,15 +274,15 @@ export const Form = () => {
             </div>
             <button id="concluir" type="submit">Enviar</button>
         </form>
+
         <div className="contatos">
             <h2>Contatos</h2>
-
-            {!Logged ? 
+            {!Logged ? (
             <div>Faça Login para mostrar seus contatos...</div>
-            : 
-            <ContactList/>
-            }
+            ) : (
+                <ContactList contacts={contacts} />
+            )}
         </div>
         </>
     );
-}
+};

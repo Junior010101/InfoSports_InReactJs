@@ -17,7 +17,11 @@ export const Form = () => {
                 reset()
 
                 if (Valid.data.existe) {
-                    const response = await api.get('/usuarios'); 
+                    const response = await api.get('/usuarios', {
+                    params: {
+                        id: Valid.data.id
+                    }
+                }); 
                     const usuarios = response.data;
                     
                     const usuarioEncontrado = usuarios.find(u => 
