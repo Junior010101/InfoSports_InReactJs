@@ -48,14 +48,14 @@ function Index() {
       <main>
             
         <section>
-          <InfoBox Esporte="boxe"/>
-          <InfoBox Esporte="volei"/>
-          <InfoBox Esporte="turfle"/>
-          <InfoBox Esporte="basquete"/>
-          <InfoBox Esporte="corrida"/>
-          <InfoBox Esporte="futebol"/>
-          <InfoBox Esporte="trilha"/>
-          <InfoBox Esporte="tenis"/>
+        <InfoBox Esporte="boxe" to="/esportes/boxe" />
+        <InfoBox Esporte="volei" to="/esportes/volei" />
+        <InfoBox Esporte="turfle" to="/esportes/turfle" />
+        <InfoBox Esporte="basquete" to="/esportes/basquete" />
+        <InfoBox Esporte="corrida" to="/esportes/corrida" />
+        <InfoBox Esporte="futebol" to="/esportes/futebol" />
+        <InfoBox Esporte="trilha" to="/esportes/trilha" />
+        <InfoBox Esporte="tenis" to="/esportes/tenis" />
         </section>
 
         <aside>

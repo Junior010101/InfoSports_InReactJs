@@ -17,24 +17,14 @@ export const Form = () => {
                 reset()
 
                 if (Valid.data.existe) {
-                    const response = await api.get('/usuarios', {
-                    params: {
-                        id: Valid.data.id
-                    }
-                }); 
-                    const usuarios = response.data;
-                    
-                    const usuarioEncontrado = usuarios.find(u => 
-                        u.email === data.email || u.telefone === data.telefone
-                    );
-
-                    window.alert(`Seja bem-vindo de volta, ${usuarioEncontrado.nome}`);
+                    localStorage.setItem('token', Valid.data.token);
                     localStorage.setItem('logged', 'true');
-                } else {
-                    window.alert("Email ou Telefone invalidos.");
+                    window.alert(`Seja bem-vindo de volta, ${Valid.data.nome}`);
+                } 
+                else {
+                    window.alert("Email ou Telefone inválidos.");
                     localStorage.setItem('logged', 'false');
                 }
-
             } catch (error) {
                 window.alert(`Deu erro`);
             }

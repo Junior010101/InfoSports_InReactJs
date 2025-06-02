@@ -44,6 +44,18 @@ export const Form = () => {
         }
     };
 
+    const handleDelete = async (id) => {
+        if (!window.confirm("Tem certeza que deseja excluir este contato?")) return;
+
+        try {
+            await api.delete(`/contatos/${id}`);
+            setContacts(prev => prev.filter(contato => contato.id !== id));
+        } catch (error) {
+            console.error("Erro ao deletar contato:", error);
+            window.alert("Não foi possível deletar o contato.");
+        }
+    };
+
     const validarNome = (input) => {
         const value = input.value.trim();
 
@@ -280,7 +292,7 @@ export const Form = () => {
             {!Logged ? (
             <div>Faça Login para mostrar seus contatos...</div>
             ) : (
-                <ContactList contacts={contacts} />
+                <ContactList contacts={contacts} onDelete={handleDelete} />
             )}
         </div>
         </>

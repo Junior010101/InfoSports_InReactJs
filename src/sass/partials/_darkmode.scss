@@ -150,6 +150,15 @@
         }
     }
 }
+
+@mixin InfoPage() {
+    div.box {
+        @apply
+         border-purple-700
+         bg-gray-700;
+    }
+}
+
 //Aplicando Estilos.
 .darkmode {
     @include TextoPadrao();    
@@ -161,6 +170,7 @@
     @include Input();
     @include Logo();
     @include ContactList();
+    @include InfoPage();
 
     @apply
      bg-gray-950;

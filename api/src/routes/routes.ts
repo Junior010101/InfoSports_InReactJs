@@ -2,26 +2,21 @@ import express from "express";
 import { autenticarUsuario, getUsers } from "./requests/login";
 import { insertUsers } from "./requests/registro";
 import { deleteUsers } from "./requests/registro";
-import { getContacts, insertContacts } from "./requests/contato";
+import { deleteContacts, getContacts, insertContacts } from "./requests/contato";
+import { autenticarToken } from "./authMiddleware"; // ajuste o caminho se necessário
 
 const router = express.Router();
-let id = 0;
 
 //checar contatos
-router.get('/contatos', async (req: any, res: any) => {
-    if (isNaN(Number(id))) {
-        return res.status(400).json({ error: 'ID inválido' });
-    }
-
-    const contacts = await getContacts(Number(id));
-    res.status(200).json(contacts);
+router.get('/contatos', autenticarToken, async (req: any, res: any) => {
+  const contacts = await getContacts(req.usuarioId);
+  res.status(200).json(contacts);
 });
 
 //Checar usuarios
 router.get('/usuarios', async (req, res) => {
     const users =  await getUsers();
     res.status(200).json(users);
-    id = Number(req.query.id);
 });
 
 router.post('/login', async (req: any, res: any) => {
@@ -41,21 +36,20 @@ router.post('/usuarios', async (req, res) => {
 });
 
 //adicionar contato
-const campos2: string[] = [
+router.post('/contatos', autenticarToken, async (req: any, res: any) => {
+  const campos2 = [
     "telefone",
     "nome_sobrenome",
     "email",
     "mensagem",
     "usuario_id"
-]
+  ];
 
-router.post('/contatos', async (req, res) => {
-    const valores = campos2.map(campo => req.body[campo]);
-    valores.push(Number(id));
+  const valores = campos2.map(campo => req.body[campo]);
+  valores.push(req.usuarioId);
 
-    const valores2 = valores.filter(item => item !== undefined);
-
-    await insertContacts(req, res, campos2, valores2);
+  const valores2 = valores.filter(item => item !== undefined);
+  await insertContacts(req, res, campos2, valores2);
 });
 
 //Remover Usuario
@@ -63,5 +57,11 @@ router.delete('/usuarios/:id', async (req, res) => {
     const id: number = Number(req.params.id);
     await deleteUsers(req, res, id);
 })
+
+//Remover contato
+router.delete('/contatos/:id', autenticarToken, async (req: any, res: any) => {
+  const contactId: number = Number(req.params.id);
+  await deleteContacts(req, res, contactId);
+});
 
 export default router;

@@ -1,0 +1,57 @@
+
+main {
+    flex: 1;
+
+    div.box {
+        @apply
+        bg-gray-50
+        rounded-lg
+        border-indigo-500
+        border-solid
+        border-2
+        flex-1
+        ml-7
+        mr-8
+        mt-2
+        mb-2;
+
+        @media (max-width: 600px) {
+            margin-top: 8px;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+
+        div.foto {
+            @apply
+            flex
+            justify-center;
+
+            img {
+                @apply
+                mt-12
+                justify-self-center
+                w-11/12
+                rounded-xl
+                max-w-full
+                max-h-full;
+            }
+
+            @media (max-width: 600px) {
+                margin-top: -15px;
+            }
+        }
+
+        div.texto {
+            @apply
+            py-4
+            px-8;
+
+            h3 {
+                @apply
+                mb-2
+                font-semibold
+                text-center;
+            }
+        }
+    }
+}

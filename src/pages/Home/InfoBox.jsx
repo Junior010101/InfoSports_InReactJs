@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import boxe from '../../assets/images/boxeFora.png' //imagem boxe
 import volei from '../../assets/images/voleiFora.png' //imagem volei
 import turfle from '../../assets/images/turfleFora.png' //imagem turfle
@@ -92,11 +94,13 @@ export const InfoBox = (props) => {
     return(
         <>
         {/* InfoBox */}
+        <NavLink to={props.to}>
         <div className='infobox'>
             <img src={Esportes[ArrayIndex][1]} alt={Esportes[ArrayIndex][4]}/>
             <h2>{Esportes[ArrayIndex][0]}</h2>
             <p>{Esportes[ArrayIndex][2]}</p>
         </div>
+        </NavLink>
         </>
     );
 }

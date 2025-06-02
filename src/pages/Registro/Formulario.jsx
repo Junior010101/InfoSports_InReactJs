@@ -20,6 +20,7 @@ export const Form = () => {
                 reset()
             } catch (error) {
                 window.alert(`O Usuario: ${data.nome}, já exite com estás mesmas informações.`);
+                console.log(error);
             }
         } else {
             window.alert('Dados inválidos!');
