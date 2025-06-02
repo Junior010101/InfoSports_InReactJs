@@ -70,9 +70,9 @@ npm run dev
 ## 📌 Status do Projeto
 - ✅ Frontend funcional.
 - ✅ Backend configurado (api) e conectado ao MySQL.
-- 🛠️ Integração visual e lógica em andamento.
+- ✅ Integração visual e lógica em andamento.
 
-**Status:** em desenvolvimento.
+**Status:** completo.
 
 ---
 **Desenvolvido por [Junior010101](https://github.com/Junior010101)**
